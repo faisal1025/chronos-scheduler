@@ -30,7 +30,9 @@ public class Job {
 
     @Getter
     @Setter
-    private String payload;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "payload_id")
+    private Payload payload;
 
     @Getter
     @Setter
@@ -69,7 +71,7 @@ public class Job {
     @JoinColumn(name = "created_by_user_id", nullable = false)
     private UserDomain createdBy;
 
-    public Job(JobType jobType, String payload, String cronExpression, LocalDateTime nextExecutionTime, Status status, Long retryInterval, Byte maxRetries, LocalDateTime createdAt, LocalDateTime updatedAt, UserDomain createdBy) {
+    public Job(JobType jobType, Payload payload, String cronExpression, LocalDateTime nextExecutionTime, Status status, Long retryInterval, Byte maxRetries, LocalDateTime createdAt, LocalDateTime updatedAt, UserDomain createdBy) {
         this.jobType = jobType;
         this.payload = payload;
         this.cronExpression = cronExpression;
