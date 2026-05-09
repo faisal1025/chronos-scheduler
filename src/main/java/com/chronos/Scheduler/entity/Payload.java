@@ -34,6 +34,6 @@ import lombok.Setter;
 public abstract class Payload {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 }
